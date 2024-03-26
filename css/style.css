@@ -1,0 +1,172 @@
+/* setting up the animation for the logo */
+@keyframes logoAnimation {
+    from {
+        width: 25px;
+        opacity: 0;
+    }
+
+    to {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+/* implementing the animation from the logo */
+#logo {
+    animation: logoAnimation 5s ease-out forwards;
+}
+
+/* chaning the default view font and background color */
+body {
+    font-family: 'Poppins', serif;
+    background-image: url('images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+
+/* editing header to use flex and have it as a column */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* links will not change color when clicked */
+a:visited {
+    color:blue;
+}
+
+/* editing nav links to use flex and be columns */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* styling the headers that are within card class */
+.card>header {
+    display: flex;
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* to have a curved border on the card header */
+    border-radius: 50px 50px 0 0;
+}
+
+/* changing cards to have an initial size of 450px */
+.card {
+    flex: 0 1 450px;
+    /* to have a curved border on the cards */
+    border-radius: 50px 50px 0 0;
+}
+
+/* styling the pricing to be flex and be centered horizontal and vertical */
+.pricing {
+    display: flex;
+    justify-content: center;
+    /* makes the pricing cards wrap when screen size is changed */
+    flex-wrap: wrap;
+}
+
+/* make the gallery class flex so it wraps */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    /* makes gallery images have a border */
+    border: 10px solid #50C7C7;
+    /* makes gallery images have the same size*/
+    width: 300px;
+    margin: 10px;
+}
+
+/* gets rid of header logo animation if reduced-motion is prefered */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+/* Media query for screen-size greater than 900px */
+@media (min-width: 900px) {
+
+    header {
+        /* makes the header a row again */
+        flex-direction: row;
+        /* makes the header not move when scrolled */
+        /* position: sticky;
+        top: 0;
+        z-index: 999; */
+        /* position: fixed; */
+    }
+    /* .card>header {
+        position: relative;
+    } */
+    .nav_links {
+        /* makes the nav links a row again */
+        flex-direction: row;
+    }
+  .pricing {
+    /* aligns prices to the center*/
+      align-items: center;
+  }
+  .card {
+    /* makes the card flex so that the cards don't have the same height but same width */
+      flex: 0 1 275px;
+  }
+}
+
+@media print {
+
+    body {
+        /* Change font of body */
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    .gallery, #gallery {
+        /* don't display the gallery for printing */
+        display: none;
+    }
+
+    nav {
+        /* needed to make the nav spaced out */
+        width: 100%;
+    }
+
+    .nav_links {
+        /* used to make the nav links spaced out */
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin: none;
+        padding: none;
+    }
+
+    .pricing {
+        /* aligns pricing to the bottom */
+        align-items: flex-end;
+        /* make all pricing appear in the same row */
+        flex-wrap: nowrap;
+    }
+
+    .card {
+        /* give cards a border */
+        border: 2px solid #45ADDD;
+        /* set the flex basis for the cards so they correctly appear */
+        flex-basis: 325px;
+    }
+
+    /* Add thumbs up to the last element of the list in the cards */
+    .card ul li:nth-child(3)::after {
+        content: '\1F44D';
+        font-size: 24px;
+    }
+}
